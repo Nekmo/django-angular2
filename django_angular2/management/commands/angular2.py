@@ -17,4 +17,3 @@ class Command(BaseCommand):
         # view.ordering_fields
         for view, pattern in get_api_views():
             print(tpl(view, pattern))
-        print('Angular2')
