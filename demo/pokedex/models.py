@@ -3,11 +3,26 @@ from django.db import models
 # Create your models here.
 
 
-class Color(models.Model):
-    identifier = models.CharField(max_length=20)
+# class Color(models.Model):
+#     identifier = models.CharField(max_length=20)
+#
+#     class Import:
+#         file = 'pokemon_colors'
 
-    class Import:
-        file = 'pokemon_colors'
+
+COLORS = [
+    ('1',	'black'),
+    ('2',	'blue'),
+    ('3',	'brown'),
+    ('4',	'gray'),
+    ('5',	'green'),
+    ('6',	'pink'),
+    ('7',	'purple'),
+    ('8',	'red'),
+    ('9',	'white'),
+    ('10', 'yellow'),
+
+]
 
 
 class Shape(models.Model):
@@ -52,7 +67,7 @@ class Specie(models.Model):
     generation = models.ForeignKey(Generation, on_delete=models.PROTECT)
     evolves_from_specie = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
     # evolution_chain =
-    color = models.ForeignKey(Color, on_delete=models.PROTECT)
+    color = models.CharField(max_length=8, choices=COLORS)
     shape = models.ForeignKey(Shape, on_delete=models.PROTECT)
     habitat = models.ForeignKey(Habitat, on_delete=models.PROTECT, blank=True, null=True)
     gender_rate = models.SmallIntegerField()
@@ -68,6 +83,7 @@ class Specie(models.Model):
 
     class Import:
         file = 'pokemon_species'
+        fields_map = {'color': 'color_id'}
 
 
 class Pokemon(models.Model):

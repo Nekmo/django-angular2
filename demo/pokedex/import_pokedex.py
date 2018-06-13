@@ -55,7 +55,7 @@ def import_model(model):
                    fields[key][1](value) for key, value in row.items() if key in
                fields}
         # print(row)
-        model.objects.create(**row)
+        model.objects.get_or_create(defaults=row, id=row['id'])
 
 
 def import_all():
