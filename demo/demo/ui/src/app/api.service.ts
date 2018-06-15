@@ -23,7 +23,7 @@ export class Pokemon extends SerializerService {
 })
 export class PokemonApi extends ApiService {
 
-    url = '/api/pokemons/';
+    url = '/api/pokemon/';
     serializer = Pokemon;
 
     constructor(http: HttpClient) {

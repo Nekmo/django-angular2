@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from pokedex.models import Pokemon, Specie
+from pokedex.models import Pokemon, Specie, Generation, Habitat, Shape, GrowthRate, Region
 
 
 class DemoSerializerMixin(object):
@@ -17,13 +17,50 @@ class DemoSerializerMixin(object):
         return fields
 
 
+class RegionSerializer(DemoSerializerMixin, serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Region
+        exclude = ()
+
+
+class GenerationSerializer(DemoSerializerMixin, serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Generation
+        exclude = ()
+
+
+class HabitatSerializer(DemoSerializerMixin, serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Habitat
+        exclude = ()
+
+
+class ShapeSerializer(DemoSerializerMixin, serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Shape
+        exclude = ()
+
+
+class GrowthRateSerializer(DemoSerializerMixin, serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = GrowthRate
+        exclude = ()
+
+
 class SpecieSerializer(DemoSerializerMixin, serializers.HyperlinkedModelSerializer):
+    growth_rate = GrowthRateSerializer()
+    shape = ShapeSerializer()
+    habitat = HabitatSerializer()
+    generation = GenerationSerializer()
+
     class Meta:
         model = Specie
         exclude = ()
 
 
 class PokemonSerializer(DemoSerializerMixin, serializers.HyperlinkedModelSerializer):
+    specie = SpecieSerializer()
+
     class Meta:
         model = Pokemon
         exclude = ()

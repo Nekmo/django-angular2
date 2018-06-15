@@ -9,8 +9,9 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
-from pokedex.models import Pokemon, Specie
-from pokedex.serializers import PokemonSerializer, UserSerializer, SpecieSerializer
+from pokedex.models import Pokemon, Specie, GrowthRate, Generation, Habitat, Shape, Region
+from pokedex.serializers import PokemonSerializer, UserSerializer, SpecieSerializer, GrowthRateSerializer, \
+    ShapeSerializer, HabitatSerializer, GenerationSerializer, RegionSerializer
 
 
 class StandardResultsSetPagination(PageNumberPagination):
@@ -42,6 +43,46 @@ class SpecieViewSet(viewsets.ModelViewSet):
     pagination_class = StandardResultsSetPagination
 
 
+class RegionViewSet(viewsets.ModelViewSet):
+    queryset = Region.objects.all()
+    serializer_class = RegionSerializer
+    ordering_fields = ('id', 'identifier')
+    search_fields = ('identifier',)
+    filter_fields = ('id', 'identifier')
+
+
+class GenerationViewSet(viewsets.ModelViewSet):
+    queryset = Generation.objects.all()
+    serializer_class = GenerationSerializer
+    ordering_fields = ('id', 'identifier')
+    search_fields = ('identifier',)
+    filter_fields = ('id', 'identifier')
+
+
+class HabitatViewSet(viewsets.ModelViewSet):
+    queryset = Habitat.objects.all()
+    serializer_class = HabitatSerializer
+    ordering_fields = ('id', 'identifier')
+    search_fields = ('identifier',)
+    filter_fields = ('id', 'identifier')
+
+
+class ShapeViewSet(viewsets.ModelViewSet):
+    queryset = Shape.objects.all()
+    serializer_class = ShapeSerializer
+    ordering_fields = ('id', 'identifier')
+    search_fields = ('identifier',)
+    filter_fields = ('id', 'identifier')
+
+
+class GrowthRateViewSet(viewsets.ModelViewSet):
+    queryset = GrowthRate.objects.all()
+    serializer_class = GrowthRateSerializer
+    ordering_fields = ('id', 'identifier')
+    search_fields = ('identifier',)
+    filter_fields = ('id', 'identifier')
+
+
 class PokemonViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list`, `create`, `retrieve`,
@@ -52,7 +93,8 @@ class PokemonViewSet(viewsets.ModelViewSet):
     queryset = Pokemon.objects.all()
     serializer_class = PokemonSerializer
     filter_backends = (filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend)
-    ordering_fields = ('id', 'identifier', 'specie', 'height', 'weight', 'base_experience', 'order', 'is_default')
+    ordering_fields = ('id', 'identifier', 'specie__generation__identifier', 'height', 'weight', 'base_experience',
+                       'order', 'is_default')
     search_fields = ('identifier',)
     filter_fields = ('id', 'identifier', 'specie', 'height', 'weight', 'base_experience', 'is_default')
     pagination_class = StandardResultsSetPagination

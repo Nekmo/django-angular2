@@ -8,9 +8,17 @@ import {PokemonApi} from "../../api.service";
 })
 export class ListComponent implements OnInit {
 
-    columns: string[] = ['id', 'identifier', 'height', 'weight', 'base_experience', 'order', 'is_default'];
+    columns: (string | {})[];
 
     constructor(public queryset: PokemonApi) {
+        queryset.options().subscribe(() => {
+            this.columns = [
+                'id', 'identifier',
+                {column: 'specie__generation__identifier', label: queryset.getLabel('specie__generation')},
+                'height', 'weight', 'base_experience', 'order',
+                'is_default'
+            ];
+        });
     }
 
     ngOnInit() {
