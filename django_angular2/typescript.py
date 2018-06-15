@@ -1,4 +1,6 @@
 from string import Template
+
+from django.db import ProgrammingError
 from rest_framework import serializers
 from rest_framework.serializers import SerializerMetaclass
 
@@ -64,9 +66,19 @@ def get_field(name, field):
     return Template(FIELD_TPL).substitute(name=name, type=type_)
 
 
+def get_route_path(route):
+    if hasattr(route, '_route'):
+        route = route._route
+    elif hasattr(route, '_regex'):
+        route = route._regex
+    else:
+        raise ProgrammingError('Route is not available on {} object'.format(route))
+    return route.lstrip('^').rstrip('$')
+
+
 def tpl(view, pattern):
     serializer = view.serializer_class()
     model = serializer.Meta.model._meta.object_name
-    url = '/' + ''.join([part._regex.lstrip('^').rstrip('$') for part in pattern])
+    url = '/' + ''.join([get_route_path(part) for part in pattern])
     fields = [get_field(name, field) for name, field in serializer.get_fields().items()]
     return Template(TPL).substitute(url=url, model=model, fields='\n'.join(fields))
