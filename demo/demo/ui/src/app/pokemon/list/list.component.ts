@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PokemonApi} from "../../api.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-list',
@@ -10,7 +11,8 @@ export class ListComponent implements OnInit {
 
     columns: (string | {})[];
 
-    constructor(public queryset: PokemonApi) {
+    constructor(public queryset: PokemonApi,
+                public router: Router) {
         queryset.options().subscribe(() => {
             this.columns = [
                 'id', 'identifier',
@@ -24,4 +26,7 @@ export class ListComponent implements OnInit {
     ngOnInit() {
     }
 
+    goToItem(row) {
+        this.router.navigate([`/pokemon/${row.id}/update`])
+    }
 }

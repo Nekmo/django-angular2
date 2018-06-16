@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
 
@@ -87,7 +88,7 @@ class Specie(models.Model):
 
 
 class Pokemon(models.Model):
-    identifier = models.CharField(max_length=50)
+    identifier = models.CharField(max_length=50, help_text=_('Pokemon name'))
     specie = models.ForeignKey(Specie, on_delete=models.CASCADE)
     height = models.PositiveSmallIntegerField()
     weight = models.PositiveSmallIntegerField()

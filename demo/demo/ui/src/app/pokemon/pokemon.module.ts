@@ -5,21 +5,23 @@ import {DjangoModule} from "angular-django";
 import {RouterModule} from "@angular/router";
 import {DjangoListModule} from "angular-django/list/list.module";
 import {HttpClientModule} from "@angular/common/http";
+import { FormComponent } from './form/form.component';
+import {DjangoFormModule} from "angular-django/form/form.module";
 
 
 const routes = [
-    // {
-    //     path     : 'create',
-    //     component: CreateComponent,
-    // },
+    {
+        path     : 'create',
+        component: FormComponent,
+    },
     {
         path     : '',
         component: ListComponent,
     },
-    // {
-    //     path     : ':mainProjectId/update',
-    //     component: UpdateComponent,
-    // },
+    {
+        path     : ':pokemonId/update',
+        component: FormComponent,
+    },
     // {
     //     path     : ':mainProjectId',
     //     component: DetailComponent,
@@ -36,8 +38,9 @@ const routes = [
 
         HttpClientModule,
         DjangoModule,
+        DjangoFormModule,
         DjangoListModule,
     ],
-    declarations: [ListComponent]
+    declarations: [ListComponent, FormComponent]
 })
 export class PokemonModule { }
