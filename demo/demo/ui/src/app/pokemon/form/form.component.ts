@@ -11,7 +11,10 @@ export class FormComponent implements OnInit {
 
     instanceId: number;
     instance: any;
-    fields = [['identifier'], ['height', 'weight', 'base_experience'], ['order', 'is_default']];
+    fields = [
+        ['identifier'], ['height', 'weight', 'base_experience'], ['order', 'is_default'],
+        ['specie__identifier', 'specie__generation'],
+    ];
 
     constructor(public api: PokemonApi,
                 public route: ActivatedRoute) { }
