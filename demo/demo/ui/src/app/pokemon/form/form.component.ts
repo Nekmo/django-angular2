@@ -13,7 +13,7 @@ export class FormComponent implements OnInit {
     instance: any;
     fields = [
         ['identifier'], ['height', 'weight', 'base_experience'], ['order', 'is_default'],
-        ['specie__identifier', 'specie__generation'],
+        ['specie__identifier', 'specie__generation', 'specie__is_baby'],
     ];
 
     constructor(public api: PokemonApi,
