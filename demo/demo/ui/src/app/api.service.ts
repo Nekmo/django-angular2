@@ -35,6 +35,10 @@ export class Generation extends SerializerService {
      @Field() identifier: string;
      @Field() main_region: string;
      @Field() id: number;
+
+     getName() {
+         return this.identifier;
+     }
 }
 
 @Injectable({
