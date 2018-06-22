@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Injector} from '@angular/core';
 import { ApiService } from 'angular-django/api.service';
 import {Field, SerializerService} from 'angular-django/serializer.service';
 import {HttpClient} from "@angular/common/http";
@@ -21,8 +21,9 @@ export class RegionApi extends ApiService {
     url = '/api/regions/';
     serializer = Region;
 
-    constructor(http: HttpClient) {
-        super(http);
+    constructor(http: HttpClient,
+                injector: Injector) {
+        super(http, injector);
     }
 }
 
@@ -49,8 +50,9 @@ export class GenerationApi extends ApiService {
     url = '/api/generations/';
     serializer = Generation;
 
-    constructor(http: HttpClient) {
-        super(http);
+    constructor(http: HttpClient,
+                injector: Injector) {
+        super(http, injector);
     }
 }
 
@@ -103,8 +105,9 @@ export class PokemonApi extends ApiService {
     url = '/api/pokemon/';
     serializer = Pokemon;
 
-    constructor(http: HttpClient) {
-        super(http);
+    constructor(http: HttpClient,
+                injector: Injector) {
+        super(http, injector);
     }
 }
 
@@ -126,8 +129,9 @@ export class HabitatApi extends ApiService {
     url = '/api/habitats/';
     serializer = Habitat;
 
-    constructor(http: HttpClient) {
-        super(http);
+    constructor(http: HttpClient,
+                injector: Injector) {
+        super(http, injector);
     }
 }
 
@@ -149,8 +153,9 @@ export class ShapeApi extends ApiService {
     url = '/api/shares/';
     serializer = Shape;
 
-    constructor(http: HttpClient) {
-        super(http);
+    constructor(http: HttpClient,
+                injector: Injector) {
+        super(http, injector);
     }
 }
 
@@ -164,8 +169,9 @@ export class SpecieApi extends ApiService {
     url = '/api/species/';
     serializer = Specie;
 
-    constructor(http: HttpClient) {
-        super(http);
+    constructor(http: HttpClient,
+                injector: Injector) {
+        super(http, injector);
     }
 }
 
@@ -188,7 +194,8 @@ export class GrowthRateApi extends ApiService {
     url = '/api/growth_rates/';
     serializer = GrowthRate;
 
-    constructor(http: HttpClient) {
-        super(http);
+    constructor(http: HttpClient,
+                injector: Injector) {
+        super(http, injector);
     }
 }
