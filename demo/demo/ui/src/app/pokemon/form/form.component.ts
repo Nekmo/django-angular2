@@ -32,8 +32,21 @@ export class FormComponent implements OnInit {
                     'queryset': this.specieApi, 'selectedItem': ($event) => { this.specieSelected($event) }
                 },
                 {'field': 'specie__generation', 'queryset': this.generationApi, 'default': null},
-                'specie__is_baby'
+                // 'specie__evolves_from_specie',
             ],
+            [
+                'specie__color', 'specie__shape', 'specie__habitat',
+            ],
+            [
+                'specie__gender_rate', 'specie__capture_rate', 'specie__base_happiness', 'specie__is_baby',
+            ],
+            [
+                'specie__hatch_counter', 'specie__has_gender_differences', 'specie__growth_rate',
+                'specie__forms_switchable'
+            ],
+            [
+                'specie__order', 'specie__conquest_order'
+            ]
         ];
 
         this.instanceId = +this.route.snapshot.paramMap.get('pokemonId');

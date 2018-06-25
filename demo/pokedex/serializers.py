@@ -59,6 +59,7 @@ class SpecieSerializer(DemoSerializerMixin, NestedCreateMixin, NestedUpdateMixin
     shape = ShapeSerializer()
     habitat = HabitatSerializer()
     generation = GenerationSerializer()
+    # evolves_from_specie = SpecieSerializer()
 
     class Meta:
         model = Specie

@@ -27,6 +27,8 @@ export class RegionApi extends ApiService {
     }
 }
 
+Region['api_class'] = RegionApi;
+
 
 ///////////////////////////////////////
 // Generation API
@@ -56,6 +58,102 @@ export class GenerationApi extends ApiService {
     }
 }
 
+Generation['api_class'] = GenerationApi;
+
+
+///////////////////////////////////////
+// Habitat API
+///////////////////////////////////////
+export class Habitat extends SerializerService {
+     @Field() url: string;
+     @Field() identifier: string;
+     @Field() id: number;
+
+    getName() {
+        return this.identifier;
+    }
+
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class HabitatApi extends ApiService {
+
+    url = '/api/habitats/';
+    serializer = Habitat;
+
+    constructor(http: HttpClient,
+                injector: Injector) {
+        super(http, injector);
+    }
+}
+
+Habitat['api_class'] = HabitatApi;
+
+
+///////////////////////////////////////
+// Shape API
+///////////////////////////////////////
+export class Shape extends SerializerService {
+     @Field() url: string;
+     @Field() identifier: string;
+     @Field() id: number;
+
+    getName() {
+        return this.identifier;
+    }
+
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ShapeApi extends ApiService {
+
+    url = '/api/shares/';
+    serializer = Shape;
+
+    constructor(http: HttpClient,
+                injector: Injector) {
+        super(http, injector);
+    }
+}
+
+Shape['api_class'] = ShapeApi;
+
+
+///////////////////////////////////////
+// GrowthRate API
+///////////////////////////////////////
+export class GrowthRate extends SerializerService {
+     @Field() url: string;
+     @Field() identifier: string;
+     @Field() formula: string;
+     @Field() id: number;
+
+    getName() {
+        return this.identifier;
+    }
+
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class GrowthRateApi extends ApiService {
+
+    url = '/api/growth_rates/';
+    serializer = GrowthRate;
+
+    constructor(http: HttpClient,
+                injector: Injector) {
+        super(http, injector);
+    }
+}
+
+GrowthRate['api_class'] = GrowthRateApi;
+
 
 ///////////////////////////////////////
 // Specie API
@@ -83,8 +181,24 @@ export class Specie extends SerializerService {
     getName() {
         return this.identifier;
     }
-
 }
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class SpecieApi extends ApiService {
+
+    url = '/api/species/';
+    serializer = Specie;
+
+    constructor(http: HttpClient,
+                injector: Injector) {
+        super(http, injector);
+    }
+}
+
+Specie['api_class'] = SpecieApi;
 
 
 ///////////////////////////////////////
@@ -109,95 +223,6 @@ export class PokemonApi extends ApiService {
 
     url = '/api/pokemon/';
     serializer = Pokemon;
-
-    constructor(http: HttpClient,
-                injector: Injector) {
-        super(http, injector);
-    }
-}
-
-
-///////////////////////////////////////
-// Habitat API
-///////////////////////////////////////
-export class Habitat extends SerializerService {
-     @Field() url: string;
-     @Field() identifier: string;
-     @Field() id: number;
-}
-
-@Injectable({
-  providedIn: 'root'
-})
-export class HabitatApi extends ApiService {
-
-    url = '/api/habitats/';
-    serializer = Habitat;
-
-    constructor(http: HttpClient,
-                injector: Injector) {
-        super(http, injector);
-    }
-}
-
-
-///////////////////////////////////////
-// Shape API
-///////////////////////////////////////
-export class Shape extends SerializerService {
-     @Field() url: string;
-     @Field() identifier: string;
-     @Field() id: number;
-}
-
-@Injectable({
-  providedIn: 'root'
-})
-export class ShapeApi extends ApiService {
-
-    url = '/api/shares/';
-    serializer = Shape;
-
-    constructor(http: HttpClient,
-                injector: Injector) {
-        super(http, injector);
-    }
-}
-
-
-
-@Injectable({
-  providedIn: 'root'
-})
-export class SpecieApi extends ApiService {
-
-    url = '/api/species/';
-    serializer = Specie;
-
-    constructor(http: HttpClient,
-                injector: Injector) {
-        super(http, injector);
-    }
-}
-
-
-///////////////////////////////////////
-// GrowthRate API
-///////////////////////////////////////
-export class GrowthRate extends SerializerService {
-     @Field() url: string;
-     @Field() identifier: string;
-     @Field() formula: string;
-     @Field() id: number;
-}
-
-@Injectable({
-  providedIn: 'root'
-})
-export class GrowthRateApi extends ApiService {
-
-    url = '/api/growth_rates/';
-    serializer = GrowthRate;
 
     constructor(http: HttpClient,
                 injector: Injector) {
