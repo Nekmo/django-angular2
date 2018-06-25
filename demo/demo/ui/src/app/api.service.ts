@@ -61,24 +61,29 @@ export class GenerationApi extends ApiService {
 // Specie API
 ///////////////////////////////////////
 export class Specie extends SerializerService {
-     @Field() url: string;
-     @Field() growth_rate: GrowthRate;
-     @Field() shape: Shape;
-     @Field() habitat: Habitat;
-     @Field() generation: Generation;
-     @Field() identifier: string;
-     @Field() color: string;
-     @Field() gender_rate: number;
-     @Field() capture_rate: number;
-     @Field() base_happiness: number;
-     @Field() is_baby: boolean;
-     @Field() hatch_counter: number;
-     @Field() has_gender_differences: boolean;
-     @Field() forms_switchable: boolean;
-     @Field() order: number;
-     @Field() conquest_order: number;
-     @Field() evolves_from_specie: string;
-     @Field() id: number;
+    @Field() url: string;
+    @Field() growth_rate: GrowthRate;
+    @Field() shape: Shape;
+    @Field() habitat: Habitat;
+    @Field() generation: Generation;
+    @Field() identifier: string;
+    @Field() color: string;
+    @Field() gender_rate: number;
+    @Field() capture_rate: number;
+    @Field() base_happiness: number;
+    @Field() is_baby: boolean;
+    @Field() hatch_counter: number;
+    @Field() has_gender_differences: boolean;
+    @Field() forms_switchable: boolean;
+    @Field() order: number;
+    @Field() conquest_order: number;
+    @Field() evolves_from_specie: string;
+    @Field() id: number;
+
+    getName() {
+        return this.identifier;
+    }
+
 }
 
 

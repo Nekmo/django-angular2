@@ -34,7 +34,7 @@ class SpecieViewSet(viewsets.ModelViewSet):
                        'gender_rate', 'capture_rate', 'base_happiness', 'is_baby', 'hatch_counter',
                        'has_gender_differences', 'growth_rate', 'forms_switchable', 'order',
                        'conquest_order')
-    search_fields = ('identifier', 'generation', 'shape__identifier', 'habitat__identifier',
+    search_fields = ('identifier', 'generation__identifier', 'shape__identifier', 'habitat__identifier',
                      'growth_rate__identifier', 'forms_switchable')
     filter_fields = ('identifier', 'generation', 'evolves_from_specie', 'color', 'shape', 'habitat',
                      'gender_rate', 'capture_rate', 'base_happiness', 'is_baby', 'hatch_counter',
