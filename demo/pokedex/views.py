@@ -34,7 +34,7 @@ class SpecieViewSet(viewsets.ModelViewSet):
                        'gender_rate', 'capture_rate', 'base_happiness', 'is_baby', 'hatch_counter',
                        'has_gender_differences', 'growth_rate', 'forms_switchable', 'order',
                        'conquest_order')
-    search_fields = ('identifier', 'generation', 'shape__identifier', 'habitat__identifier',
+    search_fields = ('identifier', 'generation__identifier', 'shape__identifier', 'habitat__identifier',
                      'growth_rate__identifier', 'forms_switchable')
     filter_fields = ('identifier', 'generation', 'evolves_from_specie', 'color', 'shape', 'habitat',
                      'gender_rate', 'capture_rate', 'base_happiness', 'is_baby', 'hatch_counter',
@@ -46,6 +46,7 @@ class SpecieViewSet(viewsets.ModelViewSet):
 class RegionViewSet(viewsets.ModelViewSet):
     queryset = Region.objects.all()
     serializer_class = RegionSerializer
+    filter_backends = (filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend)
     ordering_fields = ('id', 'identifier')
     search_fields = ('identifier',)
     filter_fields = ('id', 'identifier')
@@ -54,6 +55,7 @@ class RegionViewSet(viewsets.ModelViewSet):
 class GenerationViewSet(viewsets.ModelViewSet):
     queryset = Generation.objects.all()
     serializer_class = GenerationSerializer
+    filter_backends = (filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend)
     ordering_fields = ('id', 'identifier')
     search_fields = ('identifier',)
     filter_fields = ('id', 'identifier')
@@ -62,6 +64,7 @@ class GenerationViewSet(viewsets.ModelViewSet):
 class HabitatViewSet(viewsets.ModelViewSet):
     queryset = Habitat.objects.all()
     serializer_class = HabitatSerializer
+    filter_backends = (filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend)
     ordering_fields = ('id', 'identifier')
     search_fields = ('identifier',)
     filter_fields = ('id', 'identifier')
@@ -70,6 +73,7 @@ class HabitatViewSet(viewsets.ModelViewSet):
 class ShapeViewSet(viewsets.ModelViewSet):
     queryset = Shape.objects.all()
     serializer_class = ShapeSerializer
+    filter_backends = (filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend)
     ordering_fields = ('id', 'identifier')
     search_fields = ('identifier',)
     filter_fields = ('id', 'identifier')
@@ -78,6 +82,7 @@ class ShapeViewSet(viewsets.ModelViewSet):
 class GrowthRateViewSet(viewsets.ModelViewSet):
     queryset = GrowthRate.objects.all()
     serializer_class = GrowthRateSerializer
+    filter_backends = (filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend)
     ordering_fields = ('id', 'identifier')
     search_fields = ('identifier',)
     filter_fields = ('id', 'identifier')

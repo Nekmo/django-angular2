@@ -13,17 +13,18 @@ export class ListComponent implements OnInit {
 
     constructor(public queryset: PokemonApi,
                 public router: Router) {
-        queryset.options().subscribe(() => {
+    }
+
+    ngOnInit() {
+        this.queryset.options().subscribe(() => {
             this.columns = [
                 'id', 'identifier',
-                {column: 'specie__generation__identifier', label: queryset.getLabel('specie__generation')},
+                {column: 'specie__generation__identifier', label: this.queryset.getLabel('specie__generation')},
                 'height', 'weight', 'base_experience', 'order',
                 'is_default'
             ];
         });
-    }
 
-    ngOnInit() {
     }
 
     goToItem(row) {
