@@ -3,14 +3,46 @@ version: '3'
 services:
   db:
     image: postgres
-  web:
-    build: .
+  django-develop:
+    # build: ./docker/django
+    build:
+      context: .
+      dockerfile: ./docker/django/Dockerfile
     environment:
       PYTHONPATH: /code/
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/code
+      - ./demo:/code
     ports:
       - "8000:8000"
     depends_on:
       - db
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.2
+  angular-develop:
+    build:
+      context: .
+      dockerfile: ./docker/angular/Dockerfile
+    command: npm start
+    volumes:
+      - .:/code
+    ports:
+      - "4200:4200"
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.3
+  develop:
+    build: .
+    depends_on:
+      - angular-develop
+      # - django-develop
+networks:
+  vpcbr:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+     config:
+        - subnet: 10.5.0.0/24
+        # gateway: 10.5.0.1
