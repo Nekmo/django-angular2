@@ -20,7 +20,9 @@ export class ListComponent implements OnInit {
             this.columns = [
                 'id', 'identifier',
                 {column: 'specie__generation__identifier', label: this.queryset.getLabel('specie__generation')},
-                'height', 'weight', 'base_experience', 'order',
+                'height',
+                {column: 'weight', label: 'weight'},
+                'base_experience', 'order',
                 'is_default'
             ];
         });
