@@ -1,8 +1,11 @@
-<django-table [queryset]="queryset" [columns]="columns" (rowClick)="goToItem($event)">
-    <!--  -->
-    <ng-container djangoColumnDef="weight">
-        <div *djangoCellDef="let row">
-            {{ row.weight }}
-        </div>
-    </ng-container>
-</django-table>
+<div class="container mt-5">
+    <div class="table-wrapper mat-elevation-z8 row">
+        <django-table [queryset]="queryset" [columns]="columns" (rowClick)="goToItem($event)">
+            <ng-container djangoColumnDef="weight">
+                <div *djangoCellDef="let row">
+                    {{ row.weight }}
+                </div>
+            </ng-container>
+        </django-table>
+    </div>
+</div>
