@@ -3,7 +3,7 @@
         <django-table [queryset]="queryset" [columns]="columns" (rowClick)="goToItem($event)">
             <ng-container djangoColumnDef="weight">
                 <div *djangoCellDef="let row">
-                    {{ row.weight }}
+                    W{{ row.weight }}
                 </div>
             </ng-container>
         </django-table>
