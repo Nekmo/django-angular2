@@ -7,6 +7,7 @@ import {DjangoListModule} from "angular-django/list/list.module";
 import {HttpClientModule} from "@angular/common/http";
 import { FormComponent } from './form/form.component';
 import {DjangoFormModule} from "angular-django/form/form.module";
+import {MatButtonModule, MatIconModule, MatSidenavModule} from "@angular/material";
 
 
 const routes = [
@@ -35,6 +36,10 @@ const routes = [
         RouterModule.forChild(routes),
 
         CommonModule,
+
+        MatSidenavModule,
+        MatButtonModule,
+        MatIconModule,
 
         HttpClientModule,
         DjangoModule,
