@@ -44,7 +44,7 @@ const routes = [
         HttpClientModule,
         DjangoModule,
         DjangoFormModule,
-        DjangoListModule,
+        DjangoListModule.forRoot(),
     ],
     declarations: [ListComponent, FormComponent]
 })

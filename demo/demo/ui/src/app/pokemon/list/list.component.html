@@ -1,10 +1,12 @@
 <mat-sidenav-container>
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="true"
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-        <!--<mat-nav-list>-->
-            <!--<a mat-list-item routerLink=".">Foo</a>-->
-        <!--</mat-nav-list>-->
-        Foo bar spam
+        <div *ngFor="let x of filter.inputs">
+            <dynamic-component [config]="x"></dynamic-component>
+        </div>
+        <!--<div *ngFor="let x of filter.inputs">-->
+            <!--<ng-container *ngTemplateOutlet="x.component.template"></ng-container>-->
+        <!--</div>-->
     </mat-sidenav>
 
     <mat-sidenav-content>
