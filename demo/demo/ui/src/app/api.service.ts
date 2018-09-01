@@ -1,7 +1,6 @@
 import {Injectable, Injector} from '@angular/core';
-import { ApiService } from 'angular-django/api.service';
+import {Api, ApiService} from 'angular-django/api.service';
 import {Field, SerializerService} from 'angular-django/serializer.service';
-import {HttpClient} from "@angular/common/http";
 
 
 ///////////////////////////////////////
@@ -13,6 +12,7 @@ export class Region extends SerializerService {
      @Field() id: number;
 }
 
+@Api(Region)
 @Injectable({
   providedIn: 'root'
 })
@@ -25,8 +25,6 @@ export class RegionApi extends ApiService {
         super(injector);
     }
 }
-
-Region['api_class'] = RegionApi;
 
 
 ///////////////////////////////////////
@@ -43,6 +41,7 @@ export class Generation extends SerializerService {
      }
 }
 
+@Api(Generation)
 @Injectable({
   providedIn: 'root'
 })
@@ -55,8 +54,6 @@ export class GenerationApi extends ApiService {
         super(injector);
     }
 }
-
-Generation['api_class'] = GenerationApi;
 
 
 ///////////////////////////////////////
@@ -73,6 +70,7 @@ export class Habitat extends SerializerService {
 
 }
 
+@Api(Habitat)
 @Injectable({
   providedIn: 'root'
 })
@@ -85,8 +83,6 @@ export class HabitatApi extends ApiService {
         super(injector);
     }
 }
-
-Habitat['api_class'] = HabitatApi;
 
 
 ///////////////////////////////////////
@@ -103,6 +99,7 @@ export class Shape extends SerializerService {
 
 }
 
+@Api(Shape)
 @Injectable({
   providedIn: 'root'
 })
@@ -115,8 +112,6 @@ export class ShapeApi extends ApiService {
         super(injector);
     }
 }
-
-Shape['api_class'] = ShapeApi;
 
 
 ///////////////////////////////////////
@@ -134,6 +129,7 @@ export class GrowthRate extends SerializerService {
 
 }
 
+@Api(GrowthRate)
 @Injectable({
   providedIn: 'root'
 })
@@ -146,8 +142,6 @@ export class GrowthRateApi extends ApiService {
         super(injector);
     }
 }
-
-GrowthRate['api_class'] = GrowthRateApi;
 
 
 ///////////////////////////////////////
@@ -178,7 +172,7 @@ export class Specie extends SerializerService {
     }
 }
 
-
+@Api(Specie)
 @Injectable({
   providedIn: 'root'
 })
@@ -191,8 +185,6 @@ export class SpecieApi extends ApiService {
         super(injector);
     }
 }
-
-Specie['api_class'] = SpecieApi;
 
 
 ///////////////////////////////////////
@@ -210,6 +202,7 @@ export class Pokemon extends SerializerService {
      @Field() id: number;
 }
 
+@Api(Pokemon)
 @Injectable({
   providedIn: 'root'
 })
