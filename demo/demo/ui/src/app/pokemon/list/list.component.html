@@ -21,7 +21,8 @@
 
         <div class="container">
             <div class="table-wrapper mat-elevation-z8 row">
-                <django-table [queryset]="queryset" [columns]="columns" (rowClick)="goToItem($event)">
+                <django-table [queryset]="queryset" [columns]="columns" [filterForm]="filter.form"
+                              (rowClick)="goToItem($event)">
                     <ng-container djangoColumnDef="weight">
                         <div *djangoCellDef="let row">
                             W{{ row.weight }}

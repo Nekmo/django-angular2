@@ -98,10 +98,11 @@ class PokemonViewSet(viewsets.ModelViewSet):
     queryset = Pokemon.objects.all()
     serializer_class = PokemonSerializer
     filter_backends = (filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend)
-    ordering_fields = ('id', 'identifier', 'specie__generation__identifier', 'height', 'weight', 'base_experience',
-                       'order', 'is_default')
+    ordering_fields = ('id', 'identifier', 'specie__generation__identifier', 'height',
+                       'weight', 'base_experience', 'order', 'is_default')
     search_fields = ('identifier',)
-    filter_fields = ('id', 'identifier', 'specie', 'height', 'weight', 'base_experience', 'is_default')
+    filter_fields = ('id', 'identifier', 'specie__identifier',
+                     'specie', 'height', 'weight', 'base_experience', 'is_default')
     pagination_class = StandardResultsSetPagination
 
 
