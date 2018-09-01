@@ -1,5 +1,6 @@
 from string import Template
 
+from django.contrib.contenttypes.models import ContentType
 from django.db import ProgrammingError
 from rest_framework import serializers
 from rest_framework.serializers import SerializerMetaclass
@@ -23,6 +24,7 @@ export class ${model}Api extends ApiService {
 
     url = '${url}';
     serializer = ${model};
+    contentType = '${content_type}';
 
     constructor(http: HttpClient) {
         super(http);
@@ -78,7 +80,9 @@ def get_route_path(route):
 
 def tpl(view, pattern):
     serializer = view.serializer_class()
-    model = serializer.Meta.model._meta.object_name
+    model = serializer.Meta.model
+    model_name = model._meta.object_name
     url = '/' + ''.join([get_route_path(part) for part in pattern])
     fields = [get_field(name, field) for name, field in serializer.get_fields().items()]
-    return Template(TPL).substitute(url=url, model=model, fields='\n'.join(fields))
+    return Template(TPL).substitute(url=url, model=model_name, fields='\n'.join(fields),
+                                    content_type='_'.join(ContentType.objects.get_for_model(model).natural_key()))
