@@ -21,9 +21,8 @@ export class RegionApi extends ApiService {
     url = '/api/regions/';
     serializer = Region;
 
-    constructor(http: HttpClient,
-                injector: Injector) {
-        super(http, injector);
+    constructor(injector: Injector) {
+        super(injector);
     }
 }
 
@@ -52,9 +51,8 @@ export class GenerationApi extends ApiService {
     url = '/api/generations/';
     serializer = Generation;
 
-    constructor(http: HttpClient,
-                injector: Injector) {
-        super(http, injector);
+    constructor(injector: Injector) {
+        super(injector);
     }
 }
 
@@ -83,9 +81,8 @@ export class HabitatApi extends ApiService {
     url = '/api/habitats/';
     serializer = Habitat;
 
-    constructor(http: HttpClient,
-                injector: Injector) {
-        super(http, injector);
+    constructor(injector: Injector) {
+        super(injector);
     }
 }
 
@@ -114,9 +111,8 @@ export class ShapeApi extends ApiService {
     url = '/api/shares/';
     serializer = Shape;
 
-    constructor(http: HttpClient,
-                injector: Injector) {
-        super(http, injector);
+    constructor(injector: Injector) {
+        super(injector);
     }
 }
 
@@ -146,9 +142,8 @@ export class GrowthRateApi extends ApiService {
     url = '/api/growth_rates/';
     serializer = GrowthRate;
 
-    constructor(http: HttpClient,
-                injector: Injector) {
-        super(http, injector);
+    constructor(injector: Injector) {
+        super(injector);
     }
 }
 
@@ -192,9 +187,8 @@ export class SpecieApi extends ApiService {
     url = '/api/species/';
     serializer = Specie;
 
-    constructor(http: HttpClient,
-                injector: Injector) {
-        super(http, injector);
+    constructor(injector: Injector) {
+        super(injector);
     }
 }
 
@@ -224,8 +218,7 @@ export class PokemonApi extends ApiService {
     url = '/api/pokemon/';
     serializer = Pokemon;
 
-    constructor(http: HttpClient,
-                injector: Injector) {
-        super(http, injector);
+    constructor(injector: Injector) {
+        super(injector);
     }
 }
