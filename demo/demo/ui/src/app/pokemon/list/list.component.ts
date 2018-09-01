@@ -41,6 +41,7 @@ export class ListComponent implements OnInit, OnDestroy {
         });
         this.filter = this.djangoFilter.getFilter(this.queryset, [
             // 'specie__generation',
+            'specie__identifier',
             'specie__generation',
         ]);
     }

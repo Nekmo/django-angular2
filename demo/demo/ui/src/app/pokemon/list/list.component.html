@@ -8,6 +8,9 @@
                     <dynamic-component [config]="x"></dynamic-component>
                 </div>
             </div>
+            <div *ngIf="filter.form">
+                {{ filter.form.controls.specie__identifier.value }}
+            </div>
         </div>
 
         <!--<div *ngFor="let x of filter.inputs">-->
