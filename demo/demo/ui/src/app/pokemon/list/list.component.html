@@ -1,9 +1,15 @@
 <mat-sidenav-container>
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="true"
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="true" style="width: 300px"
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-        <div *ngFor="let x of filter.inputs">
-            <dynamic-component [config]="x"></dynamic-component>
+
+        <div class="container">
+            <div class="table-wrapper mat-elevation-z8 row">
+                <div *ngFor="let x of filter.inputs">
+                    <dynamic-component [config]="x"></dynamic-component>
+                </div>
+            </div>
         </div>
+
         <!--<div *ngFor="let x of filter.inputs">-->
             <!--<ng-container *ngTemplateOutlet="x.component.template"></ng-container>-->
         <!--</div>-->
@@ -11,9 +17,10 @@
 
     <mat-sidenav-content>
 
-        <div class="container mt-5">
+        <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+
+        <div class="container">
             <div class="table-wrapper mat-elevation-z8 row">
-                <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
                 <django-table [queryset]="queryset" [columns]="columns" (rowClick)="goToItem($event)">
                     <ng-container djangoColumnDef="weight">
                         <div *djangoCellDef="let row">

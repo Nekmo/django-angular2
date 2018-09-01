@@ -39,7 +39,10 @@ export class ListComponent implements OnInit, OnDestroy {
                 'is_default'
             ];
         });
-        this.filter = this.djangoFilter.getFilter(this.queryset, ['specie__generation']);
+        this.filter = this.djangoFilter.getFilter(this.queryset, [
+            // 'specie__generation',
+            'specie__generation',
+        ]);
     }
 
     ngOnDestroy(): void {

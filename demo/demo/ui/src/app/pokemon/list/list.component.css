@@ -1,0 +1,11 @@
+mat-sidenav .container {
+    padding: 20px;
+}
+
+mat-sidenav.mat-drawer {
+    background-color: transparent;
+}
+
+mat-sidenav-content .container {
+    padding: 20px;
+}
