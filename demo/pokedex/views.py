@@ -9,6 +9,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
+from pokedex.filters import PokemonFilter
 from pokedex.models import Pokemon, Specie, GrowthRate, Generation, Habitat, Shape, Region
 from pokedex.serializers import PokemonSerializer, UserSerializer, SpecieSerializer, GrowthRateSerializer, \
     ShapeSerializer, HabitatSerializer, GenerationSerializer, RegionSerializer
@@ -98,12 +99,19 @@ class PokemonViewSet(viewsets.ModelViewSet):
     queryset = Pokemon.objects.all()
     serializer_class = PokemonSerializer
     filter_backends = (filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend)
+    filter_class = PokemonFilter
     ordering_fields = ('id', 'identifier', 'specie__generation__identifier', 'height',
                        'weight', 'base_experience', 'order', 'is_default')
     search_fields = ('identifier',)
-    filter_fields = ('id', 'identifier', 'specie__identifier',
-                     'specie', 'height', 'weight', 'base_experience', 'is_default')
+    # filter_fields = ('id', 'identifier', 'specie__identifier',
+    #                  'specie', 'height', 'weight', 'base_experience', 'is_default')
     pagination_class = StandardResultsSetPagination
+
+
+    def get_filterset_kwargs(self, filterset_class):
+        kwargs = super().get_filterset_kwargs(filterset_class)
+        # kwargs['attribute'] = 'width'
+        return kwargs
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
