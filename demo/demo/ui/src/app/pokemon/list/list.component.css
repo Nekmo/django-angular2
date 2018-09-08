@@ -9,3 +9,7 @@ mat-sidenav.mat-drawer {
 mat-sidenav-content .container {
     padding: 20px;
 }
+
+:host ::ng-deep .mat-form-field-flex .mat-form-field-prefix {
+    height: 16px;
+}

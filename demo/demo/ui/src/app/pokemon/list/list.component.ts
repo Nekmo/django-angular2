@@ -3,6 +3,7 @@ import {PokemonApi} from "../../api.service";
 import {Router} from "@angular/router";
 import {MediaMatcher} from "@angular/cdk/layout";
 import {DjangoFilterService, DjangoFilter} from "angular-django/list/django-filter.service";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
     selector: 'app-list',
@@ -16,6 +17,9 @@ export class ListComponent implements OnInit, OnDestroy {
     mobileQuery: MediaQueryList;
     private _mobileQueryListener: () => void;
     private filter: DjangoFilter;
+    public searchForm = new FormGroup( {
+        'search': new FormControl(''),
+    });
 
     constructor(public queryset: PokemonApi,
                 public router: Router,

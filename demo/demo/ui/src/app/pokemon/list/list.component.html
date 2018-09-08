@@ -19,10 +19,18 @@
 
         <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
 
+        <!-- (keyup)="searchWord(searchInput.value)" -->
+        <form fxFlex="1 0 auto" [formGroup]="searchForm">
+            <mat-form-field floatLabel="never">
+                <mat-icon matPrefix>search</mat-icon>
+                <input id="search" matInput placeholder="Search" formControlName="search">
+            </mat-form-field>
+        </form>
+
         <div class="container">
             <div class="table-wrapper mat-elevation-z8 row">
                 <django-table [queryset]="queryset" [columns]="columns" [filterForm]="filter.form"
-                              (rowClick)="goToItem($event)">
+                              (rowClick)="goToItem($event)" [searchControl]="searchForm.controls.search">
                     <ng-container djangoColumnDef="weight">
                         <div *djangoCellDef="let row">
                             W{{ row.weight }}
