@@ -9,6 +9,7 @@ import { FormComponent } from './form/form.component';
 import {DjangoFormModule} from "angular-django/form/form.module";
 import {MatButtonModule, MatIconModule, MatInputModule, MatSidenavModule} from "@angular/material";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 const routes = [
@@ -39,6 +40,7 @@ const routes = [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        FlexLayoutModule,
 
         MatInputModule,
         MatSidenavModule,

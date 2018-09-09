@@ -13,3 +13,11 @@ mat-sidenav-content .container {
 :host ::ng-deep .mat-form-field-flex .mat-form-field-prefix {
     height: 16px;
 }
+
+#filters {
+    margin: 10px 20px;
+}
+
+#search-form-field {
+    max-width: 300px;
+}
