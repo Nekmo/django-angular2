@@ -14,10 +14,14 @@ mat-sidenav-content .container {
     height: 16px;
 }
 
-#filters {
+#header {
     margin: 10px 20px;
 }
 
 #search-form-field {
     max-width: 300px;
+}
+
+.filters-wrapper {
+    background: white;
 }

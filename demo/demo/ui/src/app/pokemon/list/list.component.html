@@ -1,4 +1,4 @@
-<form [formGroup]="searchForm" fxLayout="row" id="filters">
+<form [formGroup]="searchForm" fxLayout="row" id="header">
     <span fxFlex></span>
     <div>
         <button mat-button (click)="snav.toggle()">
@@ -18,7 +18,7 @@
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
 
         <div class="container">
-            <div class="table-wrapper mat-elevation-z8 row">
+            <div class="mat-elevation-z4 row filters-wrapper" style="background: white">
                 <div *ngFor="let x of filter.inputs">
                     <dynamic-component [config]="x"></dynamic-component>
                 </div>
@@ -36,7 +36,7 @@
         <!-- (keyup)="searchWord(searchInput.value)" -->
 
         <div class="container">
-            <div class="table-wrapper mat-elevation-z8 row">
+            <div class="table-wrapper mat-elevation-z4 row">
                 <django-table [queryset]="queryset" [columns]="columns" [filterForm]="filter.form"
                               (rowClick)="goToItem($event)" [searchControl]="searchForm.controls.search">
                     <ng-container djangoColumnDef="weight">
