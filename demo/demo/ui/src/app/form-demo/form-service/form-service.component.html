@@ -1,0 +1,9 @@
+<div>
+  form-service works!
+
+    <div *ngFor="let x of djangoForm.widgets">
+        {{x}}
+        <django-form-field [djangoFormControl]="x"></django-form-field>
+    </div>
+
+</div>

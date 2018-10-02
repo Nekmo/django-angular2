@@ -7,6 +7,10 @@ const routes: Routes = [
         path        : 'pokemon',
         loadChildren: './pokemon/pokemon.module#PokemonModule'
     },
+    {
+        path        : 'form',
+        loadChildren: './form-demo/form-demo.module#FormDemoModule'
+    },
 ];
 
 
