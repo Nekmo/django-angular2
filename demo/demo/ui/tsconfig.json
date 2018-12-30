@@ -17,12 +17,18 @@
       "dom"
     ],
     "paths": {
-        "@angular/*": [
-            "node_modules/@angular/*"
-        ],
-        "rxjs/*": [
-            "node_modules/rxjs/*"
-        ]
+      "@angular/*": [
+        "node_modules/@angular/*"
+      ],
+      "rxjs/*": [
+        "node_modules/rxjs/*"
+      ],
+      "django-angular": [
+        "dist/django-angular"
+      ],
+      "django-angular/*": [
+        "dist/django-angular/*"
+      ]
     }
   }
 }

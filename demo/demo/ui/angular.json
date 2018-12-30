@@ -24,9 +24,9 @@
               "src/assets"
             ],
             "styles": [
-                {
-                    "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
-                },
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              },
               "src/styles.scss"
             ],
             "scripts": []
@@ -115,6 +115,46 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "django-angular": {
+      "root": "projects/django-angular",
+      "sourceRoot": "projects/django-angular/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/django-angular/tsconfig.lib.json",
+            "project": "projects/django-angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/django-angular/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/django-angular/src/test.ts",
+            "tsConfig": "projects/django-angular/tsconfig.spec.json",
+            "karmaConfig": "projects/django-angular/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/django-angular/tsconfig.lib.json",
+              "projects/django-angular/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]
