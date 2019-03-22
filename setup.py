@@ -14,7 +14,7 @@ URL = 'https://github.com/Nekmo/django-angular2/'
 
 PACKAGE_NAME = 'django-angular2'
 PACKAGE_DOWNLOAD_URL = 'https://github.com/Nekmo/django-angular2/archive/master.zip'
-MODULE = 'django-angular2'
+MODULE = 'django_angular2'
 REQUIREMENT_FILE = 'requirements.txt'
 STATUS_LEVEL = 5  # 1:Planning 2:Pre-Alpha 3:Alpha 4:Beta 5:Production/Stable 6:Mature 7:Inactive
 KEYWORDS = ['django-angular2']
